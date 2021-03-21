@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
-function App() {
+import { ContextProvider } from "context";
+import { Header } from "components";
+import { Home, Login, Register } from "page-components";
+
+import { ScrollToTop, PrivateRoute, AuthRoute } from "router-utils";
+
+const AppContainer = styled.div``;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContextProvider>
+      <Router>
+        <ScrollToTop />
+        <AppContainer>
+          <Header />
+          <Switch>
+            <AuthRoute path="/login">
+              <Login />
+            </AuthRoute>
+            <AuthRoute path="/register">
+              <Register />
+            </AuthRoute>
+            <PrivateRoute path="/">
+              <Home />
+            </PrivateRoute>
+          </Switch>
+        </AppContainer>
+      </Router>
+    </ContextProvider>
   );
-}
+};
 
 export default App;

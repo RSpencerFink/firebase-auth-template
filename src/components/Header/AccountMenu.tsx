@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import { IconButton, Menu, MenuItem, Avatar } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 import { Context } from "context";
+
 const AccountMenu = () => {
+  const history = useHistory();
   const { user, logOut } = useContext(Context);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -43,7 +46,14 @@ const AccountMenu = () => {
         open={!!anchorEl}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            history.push("/profile");
+          }}
+        >
+          Profile
+        </MenuItem>
         <MenuItem
           onClick={() => {
             handleClose();

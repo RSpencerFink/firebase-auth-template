@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 import { ContextProvider } from "context";
 import { Header } from "components";
-import { Home, Login, Register } from "page-components";
+import { Home, Login, Profile, Register } from "page-components";
 
 import { ScrollToTop, PrivateRoute, AuthRoute } from "router-utils";
 
@@ -24,6 +24,9 @@ const App = () => {
             <AuthRoute path="/register">
               <Register />
             </AuthRoute>
+            <PrivateRoute path="/profile">
+              <Profile />
+            </PrivateRoute>
             <PrivateRoute path="/">
               <Home />
             </PrivateRoute>

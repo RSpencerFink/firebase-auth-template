@@ -8,6 +8,7 @@ const Form = styled.form`
   flex-direction: column;
   width: 33%;
 `;
+
 export interface RegisterFormData {
   email: string;
   firstname: string;

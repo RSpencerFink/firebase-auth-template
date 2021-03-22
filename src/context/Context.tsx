@@ -3,6 +3,7 @@ import { createContext } from "react";
 
 interface ContextState {
   user?: firebase.User;
+  userData?: firebase.firestore.DocumentData;
   logOut: () => Promise<void>;
 }
 
